@@ -23,31 +23,37 @@ public class MainActivity extends AppCompatActivity {
     public void submitExam(View view) {
         totalScore = 0;
 
-        RadioButton questionOneButton = (RadioButton) findViewById(R.id.q1A);
+        RadioButton questionOneButton = findViewById(R.id.q1A);
         boolean q1AisChecked = questionOneButton.isChecked();
 
-        RadioButton questionTwoButton = (RadioButton) findViewById(R.id.q2C);
+        RadioButton questionTwoButton = findViewById(R.id.q2C);
         boolean q2CisChecked = questionTwoButton.isChecked();
 
-        EditText questionFormBox = (EditText) findViewById(R.id.third_question);
+        EditText questionFormBox = findViewById(R.id.third_question);
         String thirdAnswer = questionFormBox.getText().toString().toLowerCase();
 
-        RadioButton questionFourButton = (RadioButton) findViewById(R.id.q4D);
+        RadioButton questionFourButton = findViewById(R.id.q4D);
         boolean q4DisChecked = questionFourButton.isChecked();
 
-        RadioButton questionFiveButton = (RadioButton) findViewById(R.id.q5A);
+        RadioButton questionFiveButton = findViewById(R.id.q5A);
         boolean q5AisChecked = questionFiveButton.isChecked();
 
-        CheckBox firstChoice = (CheckBox) findViewById(R.id.q6A);
+        CheckBox firstChoice = findViewById(R.id.q6A);
         boolean luluIsChecked = firstChoice.isChecked();
 
-        CheckBox secondChoice = (CheckBox) findViewById(R.id.q6C);
-        boolean gnarisChecked = secondChoice.isChecked();
+        CheckBox secondChoice = findViewById(R.id.q6B);
+        boolean garenIsChecked = secondChoice.isChecked();
 
-        CheckBox thirdChoice = (CheckBox) findViewById(R.id.q6D);
-        boolean corkiisChecked = thirdChoice.isChecked();
+        CheckBox thirdChoice = findViewById(R.id.q6C);
+        boolean gnarIsChecked = thirdChoice.isChecked();
 
-        double finalScore = calculateScore(q1AisChecked, q2CisChecked, thirdAnswer, q4DisChecked, q5AisChecked, luluIsChecked, gnarisChecked, corkiisChecked);
+        CheckBox fourthChoice = findViewById(R.id.q6D);
+        boolean corkiIsChecked = fourthChoice.isChecked();
+
+        CheckBox fifthChoice = findViewById(R.id.q6E);
+        boolean annieIsChecked = fifthChoice.isChecked();
+
+        double finalScore = calculateScore(q1AisChecked, q2CisChecked, thirdAnswer, q4DisChecked, q5AisChecked, luluIsChecked, gnarIsChecked, corkiIsChecked, garenIsChecked, annieIsChecked);
 
         String scoreMessage = createScoreMessage(finalScore);
         displayMessage(scoreMessage);
@@ -61,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayMessage(String message) {
-        TextView scoreSummaryTextView = (TextView) findViewById(R.id.total_score_view);
+        TextView scoreSummaryTextView = findViewById(R.id.total_score_view);
         scoreSummaryTextView.setText(message);
     }
 
@@ -71,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private int calculateScore(boolean q1AisChecked, boolean q2CisChecked, String thirdAnswer, boolean q4DisChecked, boolean q5AisChecked, boolean luluIsChecked, boolean gnarisChecked, boolean corkiisChecked) {
+    private int calculateScore(boolean q1AisChecked, boolean q2CisChecked, String thirdAnswer, boolean q4DisChecked, boolean q5AisChecked, boolean luluIsChecked, boolean gnarIsChecked, boolean corkiIsChecked, boolean garenIsChecked, boolean annieIsChecked) {
         if (q1AisChecked) {
             totalScore = totalScore + 1;
         }
@@ -90,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         if (q5AisChecked) {
             totalScore = totalScore + 1;
         }
-        if (luluIsChecked && gnarisChecked && corkiisChecked) {
+        if (luluIsChecked && gnarIsChecked && corkiIsChecked && !garenIsChecked && !annieIsChecked) {
             totalScore = totalScore + 1;
         }
         return totalScore;
@@ -99,34 +105,34 @@ public class MainActivity extends AppCompatActivity {
 
     public void resetScore(View view) {
         totalScore = 0;
-        RadioGroup radioGroupOne = (RadioGroup) findViewById(R.id.radioGroupOne);
+        RadioGroup radioGroupOne = findViewById(R.id.radioGroupOne);
         radioGroupOne.clearCheck();
 
-        RadioGroup radioGroupTwo = (RadioGroup) findViewById(R.id.radioGroupTwo);
+        RadioGroup radioGroupTwo = findViewById(R.id.radioGroupTwo);
         radioGroupTwo.clearCheck();
 
-        EditText questionFormBox = (EditText) findViewById(R.id.third_question);
+        EditText questionFormBox = findViewById(R.id.third_question);
         questionFormBox.setText("");
 
-        RadioGroup radioGroupThree = (RadioGroup) findViewById(R.id.radioGroupThree);
+        RadioGroup radioGroupThree = findViewById(R.id.radioGroupThree);
         radioGroupThree.clearCheck();
 
-        RadioGroup radioGroupFour = (RadioGroup) findViewById(R.id.radioGroupFour);
+        RadioGroup radioGroupFour = findViewById(R.id.radioGroupFour);
         radioGroupFour.clearCheck();
 
-        CheckBox optionA = (CheckBox) findViewById(R.id.q6A);
+        CheckBox optionA = findViewById(R.id.q6A);
         optionA.setChecked(false);
 
-        CheckBox optionB = (CheckBox) findViewById(R.id.q6B);
+        CheckBox optionB = findViewById(R.id.q6B);
         optionB.setChecked(false);
 
-        CheckBox optionC = (CheckBox) findViewById(R.id.q6C);
+        CheckBox optionC = findViewById(R.id.q6C);
         optionC.setChecked(false);
 
-        CheckBox optionD = (CheckBox) findViewById(R.id.q6D);
+        CheckBox optionD = findViewById(R.id.q6D);
         optionD.setChecked(false);
 
-        CheckBox optionE = (CheckBox) findViewById(R.id.q6E);
+        CheckBox optionE = findViewById(R.id.q6E);
         optionE.setChecked(false);
 
         String resetMessage = resetMessage();
